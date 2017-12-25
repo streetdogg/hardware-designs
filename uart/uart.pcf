@@ -1,0 +1,5 @@
+set_io tx           44
+set_io rx           45
+set_io clk          21
+set_io flag         95
+set_io in_progress  96
