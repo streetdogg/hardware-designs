@@ -5,7 +5,7 @@ module uart_tx (
     output           in_progress,
     output           tx
 );
-    parameter LIMIT          = 102;
+    parameter LIMIT          = 104;
     parameter IDLE           = 3'b00;
     parameter TRANSMIT       = 3'b01;
     parameter DONE           = 3'b10;
@@ -16,20 +16,14 @@ module uart_tx (
     reg [8:0]  buffer;
 
     always @(posedge clk) begin
-        if (count == LIMIT) begin
-            count <= 0;
-        end else begin
-            count <= count + 1;
-        end
-    end
-
-    always @(posedge clk) begin
         case (state)
             IDLE: begin
                 if (start == 1'b1) begin
+                    tx <= 1'b0;
+                    count <= 0;
                     state <= TRANSMIT;
                     in_progress <= 1'b1;
-                    buffer <= {data[7:0], 1'b0};
+                    buffer <= data[7:0];
                 end else begin
                     state <= IDLE;
                     tx <= 1'b1;
@@ -39,13 +33,15 @@ module uart_tx (
             end
 
             TRANSMIT: begin
-                if ( bit_transmitted == 10 ) begin
+                if ( bit_transmitted == 9 ) begin
                     state <= DONE;
-                end else if (count == 0) begin
+                end else if (count == LIMIT) begin
+                    count <= 0;
                     tx <= buffer[bit_transmitted];
                     bit_transmitted <= bit_transmitted + 1;
                 end else begin
                     tx <= tx;
+                    count <= count + 1;
                 end
             end
 

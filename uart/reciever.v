@@ -5,7 +5,7 @@ module uart_rx (
     output reg [7:0] data,
     output           done
 );
-    parameter LIMIT          = 102;
+    parameter LIMIT          = 104;
     parameter SAMPLE         = LIMIT/2;
     parameter IDLE           = 3'b00;
     parameter RECIEVE        = 3'b01;
