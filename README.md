@@ -17,7 +17,7 @@ make
 ```
 
 ## Flashing
-To flash the `*.bin` file to the board there is a `prog` target in the `Makefile` for each hardware/project. 
+To flash the `*.bin` file to the board there is a `prog` target in the `Makefile` for each hardware/project.
 ```
 sudo make prog
 ```
@@ -35,3 +35,5 @@ I have been using the following resources to create these projects.
     - Title: Project IceStorm
     - hopublished: http://bygone.clairexen.net/icestorm/
 - [NandLand](https://www.nandland.com/)
+- [spinal-alchitry-cu](https://github.com/4rzael/spinal-alchitry-cu/)
+    - Alchitry-IO pin names

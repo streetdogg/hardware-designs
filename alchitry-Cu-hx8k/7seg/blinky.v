@@ -35,9 +35,9 @@
 module top (
   input clk,
   input reset_n,
-  output [3:0] io_ioBoard_displaySelector,
-  output [7:0] io_ioBoard_display,
-  output [23:0] io_ioBoard_leds
+  output [3:0] ioboard_displaySelector,
+  output [7:0] ioboard_display,
+  output [23:0] ioboard_leds
 );
 
   localparam NIBBLE         = 4;
@@ -103,7 +103,7 @@ module top (
   /*
    * Wire the buffers out to the module
    */
-  assign io_ioBoard_displaySelector =  display_sel;
-  assign io_ioBoard_leds = counter[LOWEST_BIT + 4*NIBBLE - 1:LOWEST_BIT];
-  assign io_ioBoard_display = display_buff[DISPLAY_BUFFER];
+  assign ioboard_displaySelector =  display_sel;
+  assign ioboard_leds = counter[LOWEST_BIT + 4*NIBBLE - 1:LOWEST_BIT];
+  assign ioboard_display = display_buff[DISPLAY_BUFFER];
 endmodule

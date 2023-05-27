@@ -31,7 +31,7 @@ DEVICE  = hx8k
 PIN_DEF = $(PROJ).pcf
 PACKAGE = cb132
 
-all: $(PROJ).bin
+all: $(PROJ).bin $(PROJ).rpt
 	@
 
 %.blif: %.v
