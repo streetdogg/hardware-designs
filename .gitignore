@@ -3,3 +3,4 @@
 *.bin
 *.rpt
 *.blif
+*.DS_Store
